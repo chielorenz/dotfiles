@@ -1,0 +1,4 @@
+# Define aliases
+alias v="nvim"
+alias vi="nvim"
+alias cdw="cd ~/dev/wethod"
