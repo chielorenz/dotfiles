@@ -1,25 +1,24 @@
 #!/bin/bash
 
-# Define functions
-
 # List all functions in this file
-# see https://superuser.com/a/684256
 c:list () {
 	echo "Available functions:"
+	# see https://superuser.com/a/684256
 	print -l ${(k)functions} | grep --color=never "c:"
 }
 
 # Source custom .dotfiles
+# This should be called every thime a function or alias is updated
 c:source () {
+	echo 'Sourcing custom dotfiles'
 	source ~/.dotfiles/.profile
-	echo 'Done sourcing custom dotfiles' 
 }
 
 # Set git user 
 c:gituser () {
 	[[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" != "true" ]] && echo "You are not in a git directory" && return;
 	
-	PS3="Which user do one want to set?"
+	PS3="Which mail do you want to set?"
 	COLUMNS=1
 	emails=(chielorenz@gmail.com llorenzini@wethod.com)
 
@@ -33,5 +32,5 @@ c:gituser () {
 			echo "Invalid option, try a number"
 		fi
 	done
-	echo "Git user set $(git config user.email) ($(git config user.name)) on ${PWD}"
+	echo "User '$(git config user.email)' ($(git config user.name)) set on ${PWD}"
 }

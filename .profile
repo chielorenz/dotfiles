@@ -1,5 +1,5 @@
 # Source dotfiles
 source ~/.dotfiles/.alias
 source ~/.dotfiles/.functions
-source ~/.dotfiles/.zshrc
-source ~/.dotfiles/.p10k
+source ~/.dotfiles/zsh/.zshrc
+source ~/.dotfiles/zsh/.p10k.zsh

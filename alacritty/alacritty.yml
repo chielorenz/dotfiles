@@ -1,6 +1,9 @@
 # Alacritty custom configuration
 # see https://github.com/alacritty/alacritty/blob/master/alacritty.yml
 
+import:
+  - ~/.config/alacritty/github-dimmed.yml # must be absolute path
+
 window:
   padding:
     x: 10
@@ -8,3 +11,4 @@ window:
 
 font:
   size: 14
+
