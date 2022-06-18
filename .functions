@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+# Custom functions here
 
 # List all functions in this file
 c:list () {

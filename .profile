@@ -1,4 +1,6 @@
-# Source dotfiles
+#!/bin/sh
+# Source all needed dotfiles here
+
 source ~/.dotfiles/.alias
 source ~/.dotfiles/.functions
 source ~/.dotfiles/zsh/.zshrc
