@@ -1,9 +1,14 @@
 #!/bin/sh
 # Install and configure all needed dependencies here
 
+read -p "[dotfiles] Please backup your config files before running this script, continue [y/n]? " res
+[[ ! $res =~ ^(yes|y) ]] && exit 1
+
 echo "[dotfiles] Install homebrew"
 if [[ $(command -v brew) == "" ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/luca/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 echo "[dotfiles] Install homebrew packages"
@@ -41,12 +46,9 @@ if ! grep -q "source ~/.dotfiles/.profile" ~/.zshrc; then
     sed -i '' 's/source $ZSH\/oh-my-zsh.sh/# Source custom config\nsource ~\/.dotfiles\/.profile\n\nsource $ZSH\/oh-my-zsh.sh/' ~/.zshrc
 fi
 
-#echo "[dotfiles] Install nvim packer" 
-#if [ ! -d  ~/.local/share/nvim/site/pack/packer/start/packer.nvim ]; then
-#    git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-#fi
-
 echo "[dotfiles] Symlink nvim config files"
 mkdir -p ~/.config/nvim/lua
 ln -sf ~/.dotfiles/nvim/plugins.lua ~/.config/nvim/lua/plugins.lua
 ln -sf ~/.dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+
+echo "[dotfiles] All done 🎉"
