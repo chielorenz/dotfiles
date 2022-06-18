@@ -1,10 +1,8 @@
 # Dotfiles
 
-Personal dotfiles to setup my macos ~
+Configuration files to automate the setup of my macos development environment
 
 ## Installation
-
-> Please backup your configuration files before running any script
 
 Clone the repository
 ```sh
@@ -18,7 +16,10 @@ sh ~/.dotfiles/install.sh
 
 ## Description
 
-The `install.sh` script will install and setup
+The installation script is a "rolling" setup, which meas you can it multiple time without worring to screw things up, so ff you want to change the setup you can cnahge this repo and run the script again.
+
+The installation script will install and setup:
+
 - Homebrew
 - Homebrew packages
     - nvim
@@ -32,8 +33,9 @@ The `install.sh` script will install and setup
 - Autosuggestion zsh plugin
 - Nvim packer
     - Github theme
-- Alactritty github theme
+- Alactritty Github theme
 
 ## Caveat
 
-The setup is on early development and it has been created on MacOS 12.4 Monterrey, could not work on other system. Please backup your configuration files before running any script.
+- The first time alacritty is opened it must be done with `control + click` and then `Open`
+- The setup is on early development and it has been created on MacOS 12.4 Monterrey, could not work on other system. Please backup your configuration files before running any script
