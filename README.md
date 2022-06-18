@@ -2,9 +2,9 @@
 
 Personal dotfiles to setup my macos ~
 
-> Please backup your configuration files before running any script
-
 ## Installation
+
+> Please backup your configuration files before running any script
 
 Clone the repository
 ```sh
