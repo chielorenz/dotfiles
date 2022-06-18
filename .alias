@@ -1,4 +1,7 @@
 # Define aliases
+
 alias v="nvim"
 alias vi="nvim"
+
+alias cdb="cd ~/dev/b1n01"
 alias cdw="cd ~/dev/wethod"
