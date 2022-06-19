@@ -18,22 +18,31 @@ sh ~/.dotfiles/install.sh
 
 The installation script is a "rolling" setup, which meas you can it multiple time without worring to screw things up, so ff you want to change the setup you can cnahge this repo and run the script again.
 
+## Dependencies
+
 The installation script will install and setup:
 
-- Homebrew
-- Homebrew packages
-    - nvim
-- Homebrew casks
-    - amethyst
-    - google-chrome
-    - visual-studio-code
-    - alacritty
-- Oh-my-zsh
-- Powerlevel10k zsh theme
-- Autosuggestion zsh plugin
-- Nvim packer
-    - Github theme
-- Alactritty Github theme
+- [Homebrew](https://github.com/Homebrew/brew)
+- [Oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
+    - [Powerlevel10k](https://github.com/romkatv/powerlevel10k) theme
+    - [Autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) plugin
+- [Nvim](https://github.com/neovim/neovim)
+    - [Packer](https://github.com/wbthomason/packer.nvim)
+    - [Github theme](https://github.com/projekt0n/github-nvim-theme)
+- [Alactritty](https://github.com/alacritty/alacritty)
+    - [Github theme](https://github.com/projekt0n/github-nvim-theme/tree/main/terminal/alacritty)
+
+[OPTIONALLY]
+- [Amethyst](https://github.com/ianyh/Amethyst)
+- Google Chrome
+- Visual Studio Code
+
+## Alias and function documentation
+
+The `list` function prints out all available aliases and functions, to make this work there a special syntax:
+```
+#@doc name: Desctiption
+```
 
 ## Caveat
 
