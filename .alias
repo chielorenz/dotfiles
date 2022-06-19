@@ -19,6 +19,9 @@ alias ga="git add"
 #@doc gc: Git commit with message
 alias gc="git commit -m"
 
+#@doc gp: Git push
+alias gp="git push"
+
 #@doc gl: A better git log
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
