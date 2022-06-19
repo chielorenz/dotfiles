@@ -1,37 +1,27 @@
 #!/bin/sh
 # Custom functions here
 
-# List all functions in this file
-c:list () {
-	echo "Available functions:"
-	# see https://superuser.com/a/684256
-	print -l ${(k)functions} | grep --color=never "c:"
+#@doc list: List aliases and functions
+list () {
+    echo "Here your commands 👍👍👍"
+    grep -oh '^#@doc.\+' \
+        ~/.dotfiles/.alias \
+        ~/.dotfiles/.functions | # match doc tags
+        cut -c 7- |              # remove the '#@doc ' part
+        sort |                   # sort the result
+        grep '^[^:]\+'           # color the alias name
 }
 
-# Source custom .dotfiles
-# This should be called every thime a function or alias is updated
-c:source () {
-	echo 'Sourcing custom dotfiles'
-	source ~/.dotfiles/.profile
-}
-
-# Set git user 
-c:gituser () {
+#@doc gu [email]: Set git user
+gu () {
+    # Check if user is in a git directory
 	[[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" != "true" ]] && echo "You are not in a git directory" && return;
-	
-	PS3="Which mail do you want to set?"
-	COLUMNS=1
-	emails=(chielorenz@gmail.com llorenzini@wethod.com)
 
-	select email in $emails
-	do
-		if [[ " ${emails[*]} " =~ " ${email} " ]]; then
-			git config user.name "Luca Lorenzini"
-  			git config user.email $email
-			break
-		else
-			echo "Invalid option, try a number"
-		fi
-	done
-	echo "User '$(git config user.email)' ($(git config user.name)) set on ${PWD}"
+    # Check if email is provided
+    [ $# -eq 0 ] && echo "Provide an email address" && return;
+	
+    git config user.name "Luca Lorenzini"
+	git config user.email $1
+
+    echo "User '$(git config user.name)' ($(git config user.email)) set on ${PWD}"
 }
