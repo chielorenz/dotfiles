@@ -3,7 +3,7 @@
 
 #@doc list: List aliases and functions
 list () {
-    echo "Here your commands 👍👍👍"
+    printf "Here your commands: 🤘🤘🤘\n\n"
     grep -oh '^#@doc.\+' \
         ~/.dotfiles/.alias \
         ~/.dotfiles/.functions | # match doc tags
