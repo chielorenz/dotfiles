@@ -1,7 +1,9 @@
 #!/bin/sh
 # Install and configure all needed dependencies here
 
-read -p "[dotfiles] Please backup your config files before running this script, continue [y/n]? " res
+echo "[dotfiles] Dotfiles configuration script 🤘🤘🤘"
+
+read -p "[dotfiles] Please backup your config files first, continue [y/n]? " res
 [[ ! $res =~ ^(yes|y) ]] && exit 1
 
 echo "[dotfiles] Install homebrew"
@@ -12,12 +14,19 @@ if [[ $(command -v brew) == "" ]]; then
 fi
 
 echo "[dotfiles] Install homebrew packages"
-for p in neovim; do
+packs=(
+    nvim
+)
+for p in "${packs[@]}"; do
     brew list $p &>/dev/null || (echo "[dotfiles] Install $p" && brew install $p)
 done
 
 echo "[dotfiles] Install homebrew casks"
-for c in amethyst google-chrome visual-studio-code alacritty; do
+casks=(
+    amethyst
+    alacritty
+)
+for c in "${casks[@]}"; do
     brew list $c &>/dev/null || (echo "[dotfiles] Install $c" && brew install --cask $c)
 done
 
@@ -50,5 +59,24 @@ echo "[dotfiles] Symlink nvim config files"
 mkdir -p ~/.config/nvim/lua
 ln -sf ~/.dotfiles/nvim/plugins.lua ~/.config/nvim/lua/plugins.lua
 ln -sf ~/.dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+
+casks=(
+    google-chrome
+    visual-studio-code
+    docker
+    google-chrome
+    phpstorm
+    slack
+)
+echo "[dotfiles]"
+echo "[dotfiles] There are some optional packages:"
+printf '[dotfiles] brew install --cask %s\n' "${casks[@]}"
+read -p "[dotfiles] Do you want to install them [y/n]? " choice
+if [[ $choice =~ ^[Yy]$ ]]; then
+    echo "[dotfiles] Install homebrew optional casks"
+    for c in "${casks[@]}"; do
+        brew list $c &>/dev/null || (echo "[dotfiles] Install $c" && brew install --cask $c)
+    done
+fi
 
 echo "[dotfiles] All done 🎉"
