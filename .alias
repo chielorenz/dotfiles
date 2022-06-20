@@ -1,6 +1,13 @@
 #!/bin/sh
 # Custom aliases here
 
+# Utilities
+alias -- -='cd -'
+alias history=omz_history
+alias ls='ls --color=auto'
+alias l='ls -lah'
+alias md='mkdir -p'
+
 #@doc v: Open neovim
 alias v="nvim"
 
@@ -16,14 +23,26 @@ alias gd="git diff"
 #@doc ga: Git add
 alias ga="git add"
 
-#@doc gc: Git commit with message
-alias gc="git commit -m"
+#@doc gcm: Git commit with message
+alias gcm="git commit -m"
 
-#@doc gp: Git push
-alias gp="git push"
+#@doc gpush: Git push
+alias gpush="git push"
+
+#@doc gpull: Git pull
+alias gpull="git pull"
+
+#@doc gf: Fit fetch
+alias gf="git fetch --all"
 
 #@doc gl: A better git log
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+#@doc gc: Git checkout branch
+alias gc="git checkout"
+
+#@doc gb: List git branches
+#alias bg="git branch"
 
 #@doc cdb: Go to b1n01 directory
 alias cdb="cd ~/dev/b1n01"
@@ -31,5 +50,5 @@ alias cdb="cd ~/dev/b1n01"
 #@doc cdw: Go to wethod directory
 alias cdw="cd ~/dev/wethod"
 
-#@doc reload: Source all config files
+#@doc reload: Reload Source all config files
 alias reload="source ~/.dotfiles/.profile"

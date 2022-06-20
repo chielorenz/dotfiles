@@ -52,7 +52,7 @@ ln -sf ~/.dotfiles/alacritty/github-dimmed.yml ~/.config/alacritty/github-dimmed
 
 echo "[dotfiles] Update ~/.zshrc to source custom config" 
 if ! grep -q "source ~/.dotfiles/.profile" ~/.zshrc; then
-    sed -i '' 's/source $ZSH\/oh-my-zsh.sh/# Source custom config\nsource ~\/.dotfiles\/.profile\n\nsource $ZSH\/oh-my-zsh.sh/' ~/.zshrc
+    sed -i '' 's/source $ZSH\/oh-my-zsh.sh/# Source custom config\nsource ~\/.dotfiles\/.profile/' ~/.zshrc
 fi
 
 echo "[dotfiles] Symlink nvim config files"

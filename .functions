@@ -6,10 +6,23 @@ list () {
     printf "Here your commands: 🤘🤘🤘\n\n"
     grep -oh '^#@doc.\+' \
         ~/.dotfiles/.alias \
-        ~/.dotfiles/.functions | # match doc tags
-        cut -c 7- |              # remove the '#@doc ' part
-        sort |                   # sort the result
-        grep '^[^:]\+'           # color the alias name
+        ~/.dotfiles/.functions |      # match doc tags
+        cut -c 7- |                   # remove the '#@doc ' part
+        sort |                        # sort the result
+        grep '^[^:]\+' --color=always # color the alias name
+
+}
+
+#@doc gcs [branch]: Git "smart" checkout
+gcs () {
+    # Check if user is in a git directory
+	[[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" != "true" ]] && echo "You are not in a git directory" && return;
+
+    # Check if email is provided
+    [ $# -eq 0 ] && echo "Provide a branch name" && return;
+
+	
+	git checkout $(git branch | grep $1)
 }
 
 #@doc gu [email]: Set git user
