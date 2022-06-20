@@ -7,6 +7,7 @@ alias history=omz_history
 alias ls='ls --color=auto'
 alias l='ls -lah'
 alias md='mkdir -p'
+alias sudo='sudo ' # see https://unix.stackexchange.com/a/433849
 
 #@doc v: Open neovim
 alias v="nvim"
@@ -32,7 +33,7 @@ alias gpush="git push"
 #@doc gpull: Git pull
 alias gpull="git pull"
 
-#@doc gf: Fit fetch
+#@doc gf: Fit fetch all
 alias gf="git fetch --all"
 
 #@doc gl: A better git log
@@ -42,7 +43,7 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
 alias gc="git checkout"
 
 #@doc gb: List git branches
-#alias bg="git branch"
+alias gb="git branch"
 
 #@doc cdb: Go to b1n01 directory
 alias cdb="cd ~/dev/b1n01"

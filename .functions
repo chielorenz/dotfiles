@@ -1,6 +1,26 @@
 #!/bin/sh
 # Custom functions here
 
+# Check if in a git directory
+_is-git-directory () { 
+	if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = "true" ]; then
+    	return 0
+    else
+		echo You are not in a git directory
+        return 1
+    fi
+}
+
+# Check if the are any parameters
+_has-params () {
+	if [ -n "$1" ]; then
+    	return 0
+    else
+		echo Missing parameter/s
+        return 1
+    fi
+}
+
 #@doc list: List aliases and functions
 list () {
     printf "Here your commands: 🤘🤘🤘\n\n"
@@ -15,23 +35,21 @@ list () {
 
 #@doc gcs [branch]: Git "smart" checkout
 gcs () {
-    # Check if user is in a git directory
-	[[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" != "true" ]] && echo "You are not in a git directory" && return;
-
-    # Check if email is provided
-    [ $# -eq 0 ] && echo "Provide a branch name" && return;
-
+	_is-git-directory || return
+	_has-params $@ || return
 	
 	git checkout $(git branch | grep $1)
 }
 
+#@doc gpush-up: Git push set upsream
+gpush-up () {
+	_is-git-directory && git push --set-upstream origin $(git branch --show-current)
+}
+
 #@doc gu [email]: Set git user
 gu () {
-    # Check if user is in a git directory
-	[[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" != "true" ]] && echo "You are not in a git directory" && return;
-
-    # Check if email is provided
-    [ $# -eq 0 ] && echo "Provide an email address" && return;
+	_is-git-directory || return
+	_has-params $@ || return
 	
     git config user.name "Luca Lorenzini"
 	git config user.email $1
