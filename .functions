@@ -33,9 +33,7 @@ list () {
 
 }
 
-# Checks out a local git branch searchig it by a keyword
-# eg: gg dev -> will checkout develop
-#@doc gg [branch]: Git "smart" checkout
+#@doc gg [branch]: "Smart" checkout a git branch by searchig it
 gg () {
 	_is-git-directory || return
 	_has-params $@ || return
