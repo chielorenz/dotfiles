@@ -33,15 +33,19 @@ list () {
 
 }
 
-#@doc gcs [branch]: Git "smart" checkout
-gcs () {
+# Checks out a local git branch searchig it by a keyword
+# eg: gg dev -> will checkout develop
+#@doc gg [branch]: Git "smart" checkout
+gg () {
 	_is-git-directory || return
 	_has-params $@ || return
-	
-	git checkout $(git branch | grep $1)
+
+	# --format is to keep only branch name
+	# --max-count is to keep only first match
+	git checkout $(git branch --format='%(refname:short)' | grep $1 --max-count 1)
 }
 
-#@doc gpush-up: Git push set upsream
+#@doc gpush-up: Git push current branch and set upstream
 gpush-up () {
 	_is-git-directory && git push --set-upstream origin $(git branch --show-current)
 }

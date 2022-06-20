@@ -24,8 +24,8 @@ alias gd="git diff"
 #@doc ga: Git add
 alias ga="git add"
 
-#@doc gcm: Git commit with message
-alias gcm="git commit -m"
+#@doc gc: Git commit with message
+alias gc="git commit -m"
 
 #@doc gpush: Git push
 alias gpush="git push"
@@ -38,9 +38,6 @@ alias gf="git fetch --all"
 
 #@doc gl: A better git log
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-#@doc gc: Git checkout branch
-alias gc="git checkout"
 
 #@doc gb: List git branches
 alias gb="git branch"
