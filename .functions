@@ -39,8 +39,16 @@ gg () {
 	_has-params $@ || return
 
 	# --format is to keep only branch name
+	# --all to get local and remote branch
+	branches=$(git branch --all --format='%(refname:short)')
+
 	# --max-count is to keep only first match
-	git checkout $(git branch --format='%(refname:short)' | grep $1 --max-count 1)
+	selected=$(echo $branches | grep $1 --max-count 1)
+
+	# Ensure to checkout the local branch
+	[[ $branch == origin/* ]] && branch=$(echo $branch | cut -c 8-);
+	
+	git checkout $branch
 }
 
 #@doc gpush-up: Git push current branch and set upstream

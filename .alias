@@ -3,11 +3,11 @@
 
 # Utilities
 alias -- -='cd -'
-alias history=omz_history
 alias ls='ls --color=auto'
 alias l='ls -lah'
 alias md='mkdir -p'
 alias sudo='sudo ' # see https://unix.stackexchange.com/a/433849
+alias history=omz_history
 
 #@doc v: Open neovim
 alias v="nvim"
@@ -48,5 +48,5 @@ alias cdb="cd ~/dev/b1n01"
 #@doc cdw: Go to wethod directory
 alias cdw="cd ~/dev/wethod"
 
-#@doc reload: Reload Source all config files
-alias reload="source ~/.dotfiles/.profile"
+#@doc reload: Reload config files
+alias reload="source ~/.dotfiles/.alias && source ~/.dotfiles/.functions"
