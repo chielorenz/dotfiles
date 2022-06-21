@@ -43,10 +43,10 @@ gg () {
 	branches=$(git branch --all --format='%(refname:short)')
 
 	# --max-count is to keep only first match
-	selected=$(echo $branches | grep $1 --max-count 1)
+	branch=$(echo $branches | grep $1 --max-count 1)
 
 	# Ensure to checkout the local branch
-	[[ $branch == origin/* ]] && branch=$(echo $branch | cut -c 8-);
+	[[ $branch == origin/* ]] && branch=$(echo $branch | cut -c 8-)
 	
 	git checkout $branch
 }
