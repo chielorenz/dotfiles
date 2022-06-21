@@ -67,6 +67,7 @@ casks=(
     google-chrome
     phpstorm
     slack
+	postman
 )
 echo "[dotfiles]"
 echo "[dotfiles] There are some optional packages:"
