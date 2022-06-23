@@ -26,6 +26,8 @@ The installation script will install and setup:
     - [Autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) plugin
 - [Nvim](https://github.com/neovim/neovim)
     - [Packer](https://github.com/wbthomason/packer.nvim)
+	- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
+	- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
     - [Github theme](https://github.com/projekt0n/github-nvim-theme)
 - [Alactritty](https://github.com/alacritty/alacritty)
     - [Github theme](https://github.com/projekt0n/github-nvim-theme/tree/main/terminal/alacritty)
@@ -38,6 +40,27 @@ Optional dependencies:
 - Docker desktop
 - PHPStorm
 - Slack
+
+### Telescope
+
+The following Telescope key binds are available (defined in `nvim/init.vim`):
+
+```
+\ff # Find files
+\fg # Live grep
+\fb # Show buffers
+```
+
+### Treesitter
+
+To install a new language run the Nvim command:
+
+```
+:TSInstall language # install a language
+:TSInstallInfo      # list of all available languages
+```
+
+To ensure a language is always installed add the language to the `ensure_installed` array in `nvim/treesitter.lua` 
 
 ## Alias and function documentation
 
