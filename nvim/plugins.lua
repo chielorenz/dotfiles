@@ -12,7 +12,21 @@ return require('packer').startup(function()
 	use 'wbthomason/packer.nvim' 
 
 	-- Custom plugins here
+	
+	-- Github theme
 	use "projekt0n/github-nvim-theme"
+
+	-- Telescope
+	use {
+  		'nvim-telescope/telescope.nvim',
+  		requires = { {'nvim-lua/plenary.nvim'} }
+	}
+
+	-- Trisitter
+	use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }	
 
 	-- Automatically set up your configuration after cloning packer.nvim
   	-- Put this at the end after all plugins
