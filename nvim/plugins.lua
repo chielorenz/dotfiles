@@ -1,4 +1,6 @@
--- Packer config file
+-- Nvim plugins
+
+-- Install Packer (package manager for nvim) and all depeendencies
 -- see https://github.com/wbthomason/packer.nvim
 
 local fn = vim.fn

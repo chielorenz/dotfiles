@@ -1,12 +1,22 @@
 " Nvim configuration file
 
-" Load packer plugins
+" Load other config files (in lua)
 lua require('plugins')
+lua require('treesitter')
+
+" Set custome theme
+colorscheme github_dimmed
 
 " Disable compatibility with vi which can cause unexpected issuess
 set nocompatible
 
-" Enable type file detection. Vim will be able to try to detect the type of file in use
+" Show line number
+set number
+
+" Turn syntax highlighting on
+syntax on
+
+" Enable type file detection. Nvim will be able to try to detect the type of file in use
 filetype on
 
 " Enable plugins and load plugin for the detected file type
@@ -14,12 +24,6 @@ filetype plugin on
 
 " Load an indent file for the detected file type
 filetype indent on
-
-" Show line number
-set number
-
-" Turn syntax highlighting on
-syntax on
 
 " Set shift width to 4 spaces
 set shiftwidth=4
@@ -66,6 +70,3 @@ set wildmenu
 
 " Make wildmenu behave like similar to Bash completion.
 set wildmode=list:longest
-
-" Set theme
-colorscheme github_dimmed
