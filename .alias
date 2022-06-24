@@ -3,17 +3,14 @@
 
 # Utilities
 alias -- -='cd -'
-alias ls='ls --color=auto'
-alias l='ls -lah'
+alias l='ls -lah --color=auto'
 alias md='mkdir -p'
 alias sudo='sudo ' # see https://unix.stackexchange.com/a/433849
 alias history=omz_history
 
-#@doc v: Open neovim
+#@doc v|vi: Open neovim
 alias v="nvim"
-
-#@doc vi: Open neovim
-alias vi="nvim"
+alias vi="v"
 
 #@doc gs: Git status 
 alias gs="git status"
@@ -23,6 +20,9 @@ alias gd="git diff"
 
 #@doc ga: Git add
 alias ga="git add"
+
+#@doc gac: Git add all and commit
+alias gac="git commit -am"
 
 #@doc gc: Git commit with message
 alias gc="git commit -m"
