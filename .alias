@@ -42,6 +42,9 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
 #@doc gb: List git branches
 alias gb="git branch"
 
+#@doc gm: Git merge
+alias gm="git merge"
+
 #@doc cdb: Go to b1n01 directory
 alias cdb="cd ~/dev/b1n01"
 
