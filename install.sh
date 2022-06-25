@@ -57,8 +57,7 @@ fi
 
 echo "[dotfiles] Symlink nvim config files"
 mkdir -p ~/.config/nvim/lua
-ln -sf ~/.dotfiles/nvim/plugins.lua ~/.config/nvim/lua/plugins.lua
-ln -sf ~/.dotfiles/nvim/treesitter.lua ~/.config/nvim/lua/treesitter.lua
+ln -sf ~/.dotfiles/nvim/*.lua ~/.config/nvim/lua/
 ln -sf ~/.dotfiles/nvim/init.vim ~/.config/nvim/init.vim
 
 casks=(
