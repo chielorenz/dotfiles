@@ -28,6 +28,7 @@ The installation script will install and setup:
     - [Packer](https://github.com/wbthomason/packer.nvim)
 	- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 	- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+	- [Nvim-tree](https://github.com/kyazdani42/nvim-tree.lua)
     - [Github theme](https://github.com/projekt0n/github-nvim-theme)
 - [Alactritty](https://github.com/alacritty/alacritty)
     - [Github theme](https://github.com/projekt0n/github-nvim-theme/tree/main/terminal/alacritty)
@@ -43,7 +44,7 @@ Optional dependencies:
 
 ### Telescope
 
-The following Telescope key binds are available (defined in `nvim/init.vim`):
+The following Telescope key binds are available (defined in `nvim/telescope.lua`):
 
 ```
 \ff # Find files
@@ -61,6 +62,14 @@ To install a new language run the Nvim command:
 ```
 
 To ensure a language is always installed add the language to the `ensure_installed` array in `nvim/treesitter.lua` 
+
+### Nvim-tree
+
+The following Nvim-tree key binds are available (defined in `nvim/tree.lua`):
+```
+\e # Toggle tree buffer
+```
+
 
 ## Alias and function documentation
 
