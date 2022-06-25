@@ -3,6 +3,7 @@
 " Load other config files (in lua)
 lua require('plugins')
 lua require('treesitter')
+lua require('tree')
 
 " Set custome theme
 colorscheme github_dimmed
@@ -75,3 +76,6 @@ set wildmode=list:longest
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
+
+" Nvim-tree
+nnoremap <leader>e <cmd>NvimTreeToggle<cr>

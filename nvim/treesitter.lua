@@ -1,8 +1,7 @@
 -- Config treesitter
 -- see https://github.com/nvim-treesitter/nvim-treesitter#available-modules
 
-local configs = require("nvim-treesitter.configs")
-configs.setup {
+require("nvim-treesitter.configs").setup {
 	ensure_installed = { "bash", "javascript" }, -- Automatically install
   	sync_install = false, -- Install parsers synchronously
   	ignore_install = { "" }, -- List of parsers to ignore installing
