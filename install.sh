@@ -8,9 +8,13 @@ read -p "[dotfiles] Please backup your config files first, continue [y/n]? " res
 
 echo "[dotfiles] Install homebrew"
 if [[ $(command -v brew) == "" ]]; then
+    # Install brew
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/luca/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
+
+    # Install cask for custom fonts
+    brew tap homebrew/cask-fonts
 fi
 
 echo "[dotfiles] Install homebrew packages"
@@ -25,6 +29,7 @@ echo "[dotfiles] Install homebrew casks"
 casks=(
     amethyst
     alacritty
+    font-fira-mono-nerd-font
 )
 for c in "${casks[@]}"; do
     brew list $c &>/dev/null || (echo "[dotfiles] Install $c" && brew install --cask $c)

@@ -11,4 +11,5 @@ window:
 
 font:
   size: 16
-
+  normal:
+    family: FiraMono Nerd Font Mono
