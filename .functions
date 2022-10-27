@@ -48,6 +48,10 @@ gg () {
 	# Ensure to checkout the local branch
 	[[ $branch == origin/* ]] && branch=$(echo $branch | cut -c 8-)
 	
+	if ! git show-ref --verify --quiet refs/heads/$branch; then
+		echo No branch matching "'$1'" found locally; return;
+	fi
+
 	git checkout $branch
 }
 
