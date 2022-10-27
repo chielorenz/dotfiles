@@ -66,7 +66,6 @@ ln -sf ~/.dotfiles/nvim/*.lua ~/.config/nvim/lua/
 ln -sf ~/.dotfiles/nvim/init.vim ~/.config/nvim/init.vim
 
 casks=(
-    google-chrome
     visual-studio-code
     docker
     google-chrome
