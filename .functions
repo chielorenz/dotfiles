@@ -33,7 +33,7 @@ list () {
 
 }
 
-#@doc gg [branch]: "Smart" checkout a git branch by searchig it
+#@doc gg [branch]: "Smart" checkout a local git branch by searchig it
 gg () {
 	_is-git-directory || return
 	_has-params $@ || return
