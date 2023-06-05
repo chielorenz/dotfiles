@@ -6,7 +6,7 @@ lua require('treesitter')
 lua require('tree')
 
 " Set custome theme
-colorscheme github_dimmed
+colorscheme github_dark_dimmed
 
 " Disable compatibility with vi which can cause unexpected issuess
 set nocompatible
