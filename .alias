@@ -27,6 +27,9 @@ alias gac="git commit -am"
 #@doc gc: Git commit with message
 alias gc="git commit -m"
 
+#@doc gch: Git checkout a branch
+alias gch="git checkout"
+
 #@doc gpush: Git push
 alias gpush="git push"
 
