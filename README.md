@@ -8,7 +8,7 @@ The installation script is a "rolling" setup, which means you can run it multipl
 
 Clone the repository:
 ```sh
-git clone git@github.com:b1n01/dotfiles.git ~/.dotfiles 
+git clone git@github.com:chielorenz/dotfiles-macos.git ~/.dotfiles
 ```
 
 And run the installation script:
@@ -25,10 +25,10 @@ The installation script will install and setup:
     - [Powerlevel10k](https://github.com/romkatv/powerlevel10k) theme
     - [Autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) plugin
 - [Nvim](https://github.com/neovim/neovim)
-    - [Packer](https://github.com/wbthomason/packer.nvim)
-	- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
+    - [Lavy.nvim](https://github.com/folke/lazy.nvim)
 	- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-	- [Nvim-tree](https://github.com/kyazdani42/nvim-tree.lua)
+	- [LSP Zero](https://github.com/VonHeikemen/lsp-zero.nvim)
+	- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
     - [Github theme](https://github.com/projekt0n/github-nvim-theme)
 - [Alactritty](https://github.com/alacritty/alacritty)
     - [Github theme](https://github.com/projekt0n/github-nvim-theme/tree/main/terminal/alacritty)
@@ -44,37 +44,29 @@ Optional dependencies:
 
 ### Telescope
 
-The following Telescope key binds are available (defined in `nvim/telescope.lua`):
+The following Telescope key binds are available (defined in `nvim/after/plugin/telescope.lua`):
 
-```
-\ff # Find files
-\fg # Live grep
-\fb # Show buffers
+```bash
+<spacebar>ff # Find files
 ```
 
 ### Treesitter
 
-To install a new language run the Nvim command:
+Tresitter is configured to auto install missing lanugages when files are opened,
+but if you need to install a new language manually you can run the Nvim command:
 
-```
+```bash
 :TSInstall language # install a language
 :TSInstallInfo      # list of all available languages
 ```
 
 To ensure a language is always installed add the language to the `ensure_installed` array in `nvim/treesitter.lua` 
 
-### Nvim-tree
-
-The following Nvim-tree key binds are available (defined in `nvim/tree.lua`):
-```
-\e # Toggle tree buffer
-```
-
-
 ## Alias and function documentation
 
 The `list` function prints out all available aliases and functions, to make this work there a special syntax:
-```
+
+```bash
 #@doc name: Desctiption
 ```
 
