@@ -5,10 +5,10 @@ lua require('plugins')
 lua require('treesitter')
 lua require('tree')
 
-" Set custome theme
-colorscheme github_dimmed
+" Set custom theme
+colorscheme github_dark_dimmed
 
-" Disable compatibility with vi which can cause unexpected issuess
+" Disable compatibility with vi which can cause unexpected issues
 set nocompatible
 
 " Show line number

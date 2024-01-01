@@ -33,7 +33,7 @@ list () {
 
 }
 
-#@doc gg [branch]: "Smart" checkout a git branch by searchig it
+#@doc gg [branch]: "Smart" checkout a local git branch by searchig it
 gg () {
 	_is-git-directory || return
 	_has-params $@ || return
@@ -48,6 +48,10 @@ gg () {
 	# Ensure to checkout the local branch
 	[[ $branch == origin/* ]] && branch=$(echo $branch | cut -c 8-)
 	
+	if ! git show-ref --verify --quiet refs/heads/$branch; then
+		echo No branch matching "'$1'" found locally; return;
+	fi
+
 	git checkout $branch
 }
 
@@ -74,13 +78,13 @@ gdel () {
 }
 
 
-#@doc gu [email]: Set git user
+#@doc gu "name" "email": Set git user
 gu () {
 	_is-git-directory || return
 	_has-params $@ || return
 	
-    git config user.name "Luca Lorenzini"
-	git config user.email $1
+    git config user.name $1
+	git config user.email $2
 
     echo "User '$(git config user.name)' ($(git config user.email)) set on ${PWD}"
 }

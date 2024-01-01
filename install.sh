@@ -68,7 +68,6 @@ mkdir -p ~/.config/nvim
 ln -sf ~/.dotfiles/nvim ~/.config/nvim
 
 casks=(
-    google-chrome
     visual-studio-code
     docker
     google-chrome
