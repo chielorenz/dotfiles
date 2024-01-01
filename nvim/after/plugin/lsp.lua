@@ -10,7 +10,7 @@ require('mason-lspconfig').setup({
   -- with the ones you want to install
   -- See full list https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
   ensure_installed = {
-	  'tsserver',
+	  --'tsserver',
   },
   handlers = {
     lsp_zero.default_setup,
