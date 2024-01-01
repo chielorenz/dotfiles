@@ -48,8 +48,8 @@ alias gb="git branch"
 #@doc gm: Git merge
 alias gm="git merge"
 
-#@doc cdb: Go to b1n01 directory
-alias cdb="cd ~/dev/b1n01"
+#@doc cdb: Go to chielorenz directory
+alias cdc="cd ~/dev/chielorenz"
 
 #@doc cdw: Go to wethod directory
 alias cdw="cd ~/dev/wethod"
