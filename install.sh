@@ -10,6 +10,7 @@ echo "[dotfiles] Install homebrew"
 if [[ $(command -v brew) == "" ]]; then
     # Install brew
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	# TODO get zprofile folder dinamycally?
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/luca/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -61,9 +62,10 @@ if ! grep -q "source ~/.dotfiles/.profile" ~/.zshrc; then
 fi
 
 echo "[dotfiles] Symlink nvim config files"
-mkdir -p ~/.config/nvim/lua
-ln -sf ~/.dotfiles/nvim/*.lua ~/.config/nvim/lua/
-ln -sf ~/.dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+rm -rf ~/.config/nvim
+mkdir -p ~/.config/nvim
+# TODO get current folder dinamically?
+ln -sf ~/.dotfiles/nvim ~/.config/nvim
 
 casks=(
     google-chrome
