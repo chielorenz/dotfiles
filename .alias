@@ -39,6 +39,9 @@ alias gpull="git pull"
 #@doc gf: Fit fetch all
 alias gf="git fetch --all"
 
+#@doc gfp: Fit fetch all and git pull
+alias gfp="gf && gpull"
+
 #@doc gl: A better git log
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
