@@ -39,6 +39,24 @@ gg () {
 	_has-params $@ || return
 
 	# --format is to keep only branch name
+	branches=$(git branch --format='%(refname:short)')
+
+	# --max-count is to keep only first match
+	branch=$(echo $branches | grep $1 --max-count 1)
+
+	if ! git show-ref --verify --quiet refs/heads/$branch; then
+		echo No branch matching "'$1'" found locally; return;
+	fi
+
+	git checkout $branch
+}
+
+#@doc ggr [branch]: "Smart" checkout a git branch by searchig it
+ggr () {
+	_is-git-directory || return
+	_has-params $@ || return
+
+	# --format is to keep only branch name
 	# --all to get local and remote branch
 	branches=$(git branch --all --format='%(refname:short)')
 
@@ -48,10 +66,6 @@ gg () {
 	# Ensure to checkout the local branch
 	[[ $branch == origin/* ]] && branch=$(echo $branch | cut -c 8-)
 	
-	if ! git show-ref --verify --quiet refs/heads/$branch; then
-		echo No branch matching "'$1'" found locally; return;
-	fi
-
 	git checkout $branch
 }
 
