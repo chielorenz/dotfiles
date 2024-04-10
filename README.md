@@ -25,7 +25,7 @@ The installation script will install and setup:
     - [Powerlevel10k](https://github.com/romkatv/powerlevel10k) theme
     - [Autosuggestion](https://github.com/zsh-users/zsh-autosuggestions) plugin
 - [Nvim](https://github.com/neovim/neovim)
-    - [Lavy.nvim](https://github.com/folke/lazy.nvim)
+    - [Lazy.nvim](https://github.com/folke/lazy.nvim)
 	- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 	- [LSP Zero](https://github.com/VonHeikemen/lsp-zero.nvim)
 	- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
@@ -52,7 +52,7 @@ The following Telescope key binds are available (defined in `nvim/after/plugin/t
 
 ### Treesitter
 
-Tresitter is configured to auto install missing lanugages when files are opened,
+Tresitter is configured to auto install missing languages when files are opened,
 but if you need to install a new language manually you can run the Nvim command:
 
 ```bash
@@ -67,10 +67,10 @@ To ensure a language is always installed add the language to the `ensure_install
 The `list` function prints out all available aliases and functions, to make this work there a special syntax:
 
 ```bash
-#@doc name: Desctiption
+# @doc name: Description
 ```
 
 ## Caveat
 
-- The first time alacritty is opened it must be done with `control + click` and then `Open`
+- The first time Alacritty is opened it must be done with `control + click` and then `Open`
 - The setup is on early development and it has been created on MacOS 12.4 Monterrey, could not work on other system. Please backup your configuration files before running any script

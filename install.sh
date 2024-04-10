@@ -57,6 +57,7 @@ ln -sf ~/.dotfiles/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -sf ~/.dotfiles/alacritty/github-dimmed.yml ~/.config/alacritty/github-dimmed.yml
 
 echo "[dotfiles] Update ~/.zshrc to source custom config" 
+curl https://raw.githubusercontent.com/chielorenz/git-shorthands/main/git-shorthands.sh -s -o .git-shorthands
 if ! grep -q "source ~/.dotfiles/.profile" ~/.zshrc; then
     sed -i '' 's/source $ZSH\/oh-my-zsh.sh/# Source custom config\nsource ~\/.dotfiles\/.profile/' ~/.zshrc
 fi
@@ -75,7 +76,6 @@ casks=(
     slack
 	postman
 )
-echo "[dotfiles]"
 echo "[dotfiles] There are some optional packages:"
 printf '[dotfiles] brew install --cask %s\n' "${casks[@]}"
 read -p "[dotfiles] Do you want to install them [y/n]? " choice

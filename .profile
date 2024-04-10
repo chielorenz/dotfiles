@@ -11,6 +11,6 @@ source $ZSH/oh-my-zsh.sh
 # Remove oh-my-zsh aliases
 unalias ${(k)aliases}
 
-# Source cusotm aliases and funtions
+# Source custom aliases
 source ~/.dotfiles/.alias
-source ~/.dotfiles/.functions
+source ~/.dotfiles/.git-shorthands

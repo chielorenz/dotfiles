@@ -1,61 +1,11 @@
 #!/bin/sh
-# Custom aliases here
 
-# Utilities
 alias -- -='cd -'
 alias l='ls -lah --color=auto'
 alias md='mkdir -p'
 alias sudo='sudo ' # see https://unix.stackexchange.com/a/433849
 alias history=omz_history
-
-#@doc v|vi: Open neovim
 alias v="nvim"
 alias vi="v"
-
-#@doc gs: Git status 
-alias gs="git status"
-
-#@doc gd: Git diff
-alias gd="git diff"
-
-#@doc ga: Git add
-alias ga="git add"
-
-#@doc gac: Git add all and commit
-alias gac="git commit -am"
-
-#@doc gc: Git commit with message
-alias gc="git commit -m"
-
-#@doc gch: Git checkout a branch
-alias gch="git checkout"
-
-#@doc gpush: Git push
-alias gpush="git push"
-
-#@doc gpull: Git pull
-alias gpull="git pull"
-
-#@doc gf: Fit fetch all
-alias gf="git fetch --all"
-
-#@doc gfp: Fit fetch all and git pull
-alias gfp="gf && gpull"
-
-#@doc gl: A better git log
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-#@doc gb: List git branches
-alias gb="git branch"
-
-#@doc gm: Git merge
-alias gm="git merge"
-
-#@doc cdb: Go to chielorenz directory
 alias cdc="cd ~/dev/chielorenz"
-
-#@doc cdw: Go to wethod directory
 alias cdw="cd ~/dev/wethod"
-
-#@doc reload: Reload config files
-alias reload="source ~/.dotfiles/.alias && source ~/.dotfiles/.functions"
