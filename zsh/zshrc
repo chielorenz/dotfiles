@@ -1,0 +1,15 @@
+# Add Homebrew to path
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Source antigen
+source /opt/homebrew/share/antigen/antigen.zsh
+
+# Install zsh plugins
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen apply
+
+# Source custom aliases and git-shorthands
+source ~/.dotfiles/zsh/aliases
+source ~/.dotfiles/zsh/git-shorthands

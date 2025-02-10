@@ -2,10 +2,7 @@
 
 alias -- -='cd -'
 alias l='ls -lah --color=auto'
-alias md='mkdir -p'
 alias sudo='sudo ' # see https://unix.stackexchange.com/a/433849
-alias history=omz_history
 alias v="nvim"
-alias vi="v"
 alias cdc="cd ~/dev/chielorenz"
 alias cdw="cd ~/dev/wethod"

@@ -1,83 +1,66 @@
 #!/bin/sh
-# Install and configure all needed dependencies here
 
-echo "[dotfiles] Dotfiles configuration script 🤘🤘🤘"
+echo "[dotfiles] Dotfiles installation 🤘🤘🤘"
 
-read -p "[dotfiles] Please backup your config files first, continue [y/n]? " res
-[[ ! $res =~ ^(yes|y) ]] && exit 1
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+if [[ $SCRIPT_DIR != "$HOME/.dotfiles" ]]; then
+  echo "[dotfiles] The repository must be cloned in ~/.dotfiles"
+  exit 1
+fi
 
-echo "[dotfiles] Install homebrew"
 if [[ $(command -v brew) == "" ]]; then
-    # Install brew
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	# TODO get zprofile folder dinamycally?
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/luca/.zprofile
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+  echo "[dotfiles] Installing Homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    # Install cask for custom fonts
-    brew tap homebrew/cask-fonts
+  echo "\n# Add Homebrew to path" >> ~/.zprofile
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+
+else
+  echo "[dotfiles] Homebrew already installed"
 fi
 
-echo "[dotfiles] Install homebrew packages"
-packs=(
-    nvim
-)
-for p in "${packs[@]}"; do
-    brew list $p &>/dev/null || (echo "[dotfiles] Install $p" && brew install $p)
-done
-
-echo "[dotfiles] Install homebrew casks"
-casks=(
-    amethyst
-    alacritty
-    font-fira-mono-nerd-font
-)
-for c in "${casks[@]}"; do
-    brew list $c &>/dev/null || (echo "[dotfiles] Install $c" && brew install --cask $c)
-done
-
-echo "[dotfiles] Install oh-my-zsh" 
-if [ ! -d ~/.oh-my-zsh ]; then
-    /bin/bash -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if ! brew list --cask ghostty &>/dev/null; then
+  echo "[dotfiles] Installing Ghostty"
+  brew install --cask ghostty
+  if [ -f ~/.config/ghostty/config ]; then
+      echo "[dotfiles] Backup existing Ghostty config file"
+      mv ~/.config/ghostty/config ~/.config/ghostty/config.bak
+  fi
+  echo "[dotfiles] Symlink Ghostty config file"
+  mkdir -p ~/.config/ghostty/
+  ln -sf ./ghostty/config ~/.config/ghostty/config
+else
+  echo "[dotfiles] Ghostty already installed"
 fi
 
-echo "[dotfiles] Install powerlevel10k zsh theme"
-if [ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k ]; then
-    git clone --depth 1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+if ! brew list antigen &>/dev/null; then
+  echo "[dotfiles] Installing Antigen"
+  brew install antigen
+else
+  echo "[dotfiles] Antigen already installed"
 fi
 
-echo "[dotfiles] Install autosuggestion zsh plugin"
-if [ ! -d ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]; then
-    git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+echo "[dotfiles] Installing git-shorthands"
+curl https://raw.githubusercontent.com/chielorenz/git-shorthands/main/git-shorthands.sh -s -o ~/.dotfiles/zsh/git-shorthands
+
+if ! grep -q "source ~/.dotfiles/zsh/.zshrc" ~/.zshrc; then
+    echo "[dotfiles] Update ~/.zshrc to source custom config"
+    echo "\n# Source dotfiles config" >> ~/.zshrc
+    echo "source ~/.dotfiles/zsh/zshrc" >> ~/.zshrc
+else
+    echo "[dotfiles] Custom config already sourced in ~/.zshrc"
 fi
-
-echo "[dotfiles] Symlink alacritty config files"
-mkdir -p ~/.config/alacritty
-ln -sf ~/.dotfiles/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
-ln -sf ~/.dotfiles/alacritty/github-dimmed.yml ~/.config/alacritty/github-dimmed.yml
-
-echo "[dotfiles] Update ~/.zshrc to source custom config" 
-curl https://raw.githubusercontent.com/chielorenz/git-shorthands/main/git-shorthands.sh -s -o .git-shorthands
-if ! grep -q "source ~/.dotfiles/.profile" ~/.zshrc; then
-    sed -i '' 's/source $ZSH\/oh-my-zsh.sh/# Source custom config\nsource ~\/.dotfiles\/.profile/' ~/.zshrc
-fi
-
-echo "[dotfiles] Symlink nvim config files"
-rm -rf ~/.config/nvim
-mkdir -p ~/.config/nvim
-# TODO get current folder dinamically?
-ln -sf ~/.dotfiles/nvim ~/.config/nvim
 
 casks=(
+    google-chrome
     visual-studio-code
     docker
-    google-chrome
     phpstorm
     slack
-	postman
 )
 echo "[dotfiles] There are some optional packages:"
-printf '[dotfiles] brew install --cask %s\n' "${casks[@]}"
+printf '[dotfiles] • %s\n' "${casks[@]}"
 read -p "[dotfiles] Do you want to install them [y/n]? " choice
 if [[ $choice =~ ^[Yy]$ ]]; then
     echo "[dotfiles] Install homebrew optional casks"
