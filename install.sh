@@ -29,7 +29,7 @@ if ! brew list --cask ghostty &>/dev/null; then
   fi
   echo "[dotfiles] Symlink Ghostty config file"
   mkdir -p ~/.config/ghostty/
-  ln -sf ./ghostty/config ~/.config/ghostty/config
+  ln -sf ~/.dotfiles/ghostty/config ~/.config/ghostty/config
 else
   echo "[dotfiles] Ghostty already installed"
 fi

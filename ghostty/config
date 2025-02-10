@@ -1,1 +1,8 @@
-theme = GitHub-Dark-Dimmed
+# Reload confit with cmd+shift+r
+keybind = cmd+shift+r=reload_config
+
+# Theme
+theme = Firewatch
+window-padding-x = 8
+window-padding-y = 8
+font-size = 14
