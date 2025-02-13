@@ -6,3 +6,8 @@ theme = Firewatch
 window-padding-x = 8
 window-padding-y = 8
 font-size = 14
+
+# Disable ligatures
+font-feature = -calt
+font-feature = -dlig
+font-feature = -liga
