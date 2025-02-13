@@ -1,0 +1,77 @@
+function git_symbols() {
+	local ahead='↑' # commit to push
+	local behind='↓' # commit to pull
+	local staged='+' # new file
+	local untracked='?' # new unstaged file
+	local modified='*' # modified file
+	local deleted='x' # deleted file 
+	local no_remote='↗' # branch never pushed
+	local ahead_count # how many commits to push
+	local behind_count # how many commits to pull
+	local symbols=''
+
+	# Untracked
+	[[ $(git ls-files --exclude-standard --others) ]] && symbols+="$untracked"
+
+	# Staged
+	[[ $(git diff --name-only --cached) ]] && symbols+="$staged"
+
+	# Modified
+	[[ $(git diff --name-only) ]] && symbols+="$modified"
+
+	# Deleted
+	[[ $(git ls-files --deleted) ]] && symbols+="$deleted"
+
+	# Check if the current branch has an upstream
+	if git rev-parse --abbrev-ref --symbolic-full-name @{upstream} >/dev/null; then
+		# Ahead
+		ahead_count="$(git rev-list --count origin/$(git rev-parse --abbrev-ref HEAD)..HEAD)"
+		[[ $ahead_count != 0 ]] && symbols+="$ahead_count$ahead"
+
+		# Behind
+		behind_count="$(git rev-list --count HEAD..origin/$(git rev-parse --abbrev-ref HEAD))"
+		[[ $behind_count != 0 ]] && symbols+="$behind_count$behind"
+	else
+		symbols+="$no_remote"
+	fi
+
+	[[ -n $symbols ]] && echo -n "$symbols"
+}
+
+function git_info() {
+	# If we are in a git repository
+	if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+		local info="$(git symbolic-ref --short HEAD 2>/dev/null)"
+		local symbols="$(git_symbols)"
+
+		if [ -n "$symbols" ]; then
+			info+="[$symbols]"
+		fi
+		
+		echo "$info"
+	fi
+}
+
+#Load vcs_info module (-U autoload w/o substition, -z use zsh style)
+autoload -Uz vcs_info
+
+# Set prompt substitution so we can use the vcs_info_message variable
+setopt prompt_subst
+
+
+precmd() {
+  local custom_promt=''
+  local current_path='%F{blue}%~%f'
+  time='%F{240}%*%f'
+  custom_promt='$current_path '
+  custom_promt+='%F{yellow}$(git_info)%f '
+  custom_promt+='$time'
+  print -P $custom_promt
+}
+
+# Show a green dot if the last command was successful, a red one otherwise
+STATUS_DOT='%(?.%F{green}⏺%f.%F{red}⏺%f)'
+# Show [root] in red if the user is root
+ROOT='%(!.%F{red}[root]%f .)' 
+
+PROMPT='${ROOT}${STATUS_DOT} '

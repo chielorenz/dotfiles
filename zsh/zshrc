@@ -10,6 +10,12 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
-# Source custom aliases and git-shorthands
+# Source custom aliases
 source ~/.dotfiles/zsh/aliases
+# Source custom git aliases
 source ~/.dotfiles/zsh/git-shorthands
+# Source custom prompts
+source ~/.dotfiles/zsh/prompt
+
+# Fix ghostty display issues when sudo -s, see https://github.com/ghostty-org/ghostty/issues/3335#issuecomment-2563510084
+export TERM=xterm-256color
