@@ -24,17 +24,22 @@ function git_symbols() {
 	# Deleted
 	[[ $(git ls-files --deleted) ]] && symbols+="$deleted"
 
-	# Check if the current branch has an upstream
-	if git rev-parse --abbrev-ref --symbolic-full-name @{upstream} >/dev/null 2>&1; then
-		# Ahead
-		ahead_count="$(git rev-list --count origin/$(git rev-parse --abbrev-ref HEAD)..HEAD)"
-		[[ $ahead_count != 0 ]] && symbols+="$ahead_count$ahead"
+	# Check if the current branch is not detached
+	if [ -n "$(git branch --show-current)" ]; then 
+		# Check if the current branch has an upstream
+		if git rev-parse --abbrev-ref --symbolic-full-name @{upstream} >/dev/null 2>&1; then
+			# Ahead
+			ahead_count="$(git rev-list --count origin/$(git rev-parse --abbrev-ref HEAD)..HEAD)"
+			[[ $ahead_count != 0 ]] && symbols+="$ahead_count$ahead"
 
-		# Behind
-		behind_count="$(git rev-list --count HEAD..origin/$(git rev-parse --abbrev-ref HEAD))"
-		[[ $behind_count != 0 ]] && symbols+="$behind_count$behind"
+			# Behind
+			behind_count="$(git rev-list --count HEAD..origin/$(git rev-parse --abbrev-ref HEAD))"
+			[[ $behind_count != 0 ]] && symbols+="$behind_count$behind"
+		else
+			symbols+="$no_remote"
+		fi
 	else
-		symbols+="$no_remote"
+		symbols+='detached'
 	fi
 
 	[[ -n $symbols ]] && echo -n "$symbols"
