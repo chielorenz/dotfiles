@@ -1,3 +1,5 @@
+#!/bin/sh
+
 function git_symbols() {
 	local ahead='↑' # commit to push
 	local behind='↓' # commit to pull
@@ -23,7 +25,7 @@ function git_symbols() {
 	[[ $(git ls-files --deleted) ]] && symbols+="$deleted"
 
 	# Check if the current branch has an upstream
-	if git rev-parse --abbrev-ref --symbolic-full-name @{upstream} >/dev/null; then
+	if git rev-parse --abbrev-ref --symbolic-full-name @{upstream} >/dev/null 2>&1; then
 		# Ahead
 		ahead_count="$(git rev-list --count origin/$(git rev-parse --abbrev-ref HEAD)..HEAD)"
 		[[ $ahead_count != 0 ]] && symbols+="$ahead_count$ahead"
