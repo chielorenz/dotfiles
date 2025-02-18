@@ -15,7 +15,6 @@ if [[ $(command -v brew) == "" ]]; then
   echo "\n# Add Homebrew to path" >> ~/.zprofile
   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
   eval "$(/opt/homebrew/bin/brew shellenv)"
-
 else
   echo "[dotfiles] Homebrew already installed"
 fi
@@ -34,6 +33,28 @@ else
   echo "[dotfiles] Ghostty already installed"
 fi
 
+if ! brew list --cask font-hack-nerd-font &>/dev/null; then
+  echo "[dotfiles] Installing font hack nerd font"
+  brew install --cask font-hack-nerd-font
+else
+  echo "[dotfiles] Font hack nerd font already installed"
+fi
+
+
+if ! brew list neovimm &>/dev/null; then
+  	echo "[dotfiles] Installing Neovim"
+	brew install neovim
+  	if [ -f ~/.config/nvim/init.lua ]; then
+      		echo "[dotfiles] Backup existing Neovim config file"
+      		mv ~/.config/nvim/init.lua ~/.config/nvim/init.lua.bak
+  	fi
+  	echo "[dotfiles] Symlink Neovim config file"
+  	mkdir -p ~/.config/nvim/
+  	ln -sf ~/.dotfiles/nvim/init.lua ~/.config/nvim/init.lua
+else
+  	echo "[dotfiles] Neovim already installed"
+fi
+
 if ! brew list antigen &>/dev/null; then
   echo "[dotfiles] Installing Antigen"
   brew install antigen
@@ -44,8 +65,8 @@ fi
 echo "[dotfiles] Installing git-shorthands"
 curl https://raw.githubusercontent.com/chielorenz/git-shorthands/main/git-shorthands.sh -s -o ~/.dotfiles/zsh/git-shorthands
 
-if ! grep -q "source ~/.dotfiles/zsh/.zshrc" ~/.zshrc; then
-    echo "[dotfiles] Update ~/.zshrc to source custom config"
+if ! grep -q "source ~/.dotfiles/zsh/zshrc" ~/.zshrc; then
+    echo "[dotfiles] Update ~/zshrc to source custom config"
     echo "\n# Source dotfiles config" >> ~/.zshrc
     echo "source ~/.dotfiles/zsh/zshrc" >> ~/.zshrc
 else

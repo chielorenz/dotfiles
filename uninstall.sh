@@ -10,6 +10,20 @@ else
     rm ~/.config/ghostty/config
 fi
 
+if ! brew list neovim &>/dev/null; then
+    echo "[dotfiles] Neovim is not installed"
+else
+    echo "[dotfiles] Uninstalling Neovim"
+    brew uninstall neovim
+fi
+
+if ! brew list --cask font-hack-nerd-font &>/dev/null; then
+    echo "[dotfiles] Font hack nerd font is not installed"
+else
+    echo "[dotfiles] Uninstalling Font hack nerd font"
+    brew uninstall --cask font-hack-nerd-font
+fi
+
 if ! brew list antigen &>/dev/null; then
     echo "[dotfiles] Antigen is not installed"
 else
