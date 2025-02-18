@@ -69,7 +69,7 @@ setopt prompt_subst
 precmd() {
   local custom_promt=''
   local current_path='%F{blue}%~%f'
-  time='%F{240}%*%f'
+  time='%F{242}%*%f'
   custom_promt='$current_path '
   custom_promt+='%F{yellow}$(git_info)%f '
   custom_promt+='$time'
