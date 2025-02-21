@@ -67,13 +67,13 @@ setopt prompt_subst
 
 
 precmd() {
-  local custom_promt=''
-  local current_path='%F{blue}%~%f'
-  time='%F{242}%*%f'
-  custom_promt='$current_path '
-  custom_promt+='%F{yellow}$(git_info)%f '
-  custom_promt+='$time'
-  print -P $custom_promt
+	local custom_promt=''
+	local current_path='%F{blue}%~%f'
+	time='%F{242}%*%f'
+	custom_promt='$current_path '
+	custom_promt+='%F{yellow}$(git_info)%f '
+	custom_promt+='$time'
+	print -P $custom_promt
 }
 
 # Show a green dot if the last command was successful, a red one otherwise

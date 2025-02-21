@@ -25,7 +25,11 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
 	spec = {
 		-- add your plugins here
+		
+		-- Install oxocarbon color scheme
         {  "nyoom-engineering/oxocarbon.nvim" },
+
+		-- Install treesitter
 		{
 			"nvim-treesitter/nvim-treesitter",
             build = ":TSUpdate",
@@ -52,36 +56,50 @@ require("lazy").setup({
 vim.opt.background = "dark" -- set this to dark or light
 vim.cmd.colorscheme "oxocarbon"
 
--- Other configs
-
---vim.opt.guicursor = ""
-
+-- Show current line number
 vim.opt.nu = true
+
+-- Use relative line number
 vim.opt.relativenumber = true
 
+-- Number of spaces that a <Tab> in the file counts for
 vim.opt.tabstop = 4
+
+-- Number of spaces that a <Tab> counts for while editing
 vim.opt.softtabstop = 4
+
+-- Number of spaces to use for each step of (auto)indent
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
 
---vim.opt.smartindent = true
+-- Do smart autoindenting when starting a new line
+vim.opt.smartindent = true
 
---vim.opt.wrap = false
+-- This option changes how text is displayed
+vim.opt.wrap = true
 
---vim.opt.swapfile = false
---vim.opt.backup = false
---vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
---vim.opt.undofile = true
+-- Wrap at a word boundary insead of the middle of a word
+vim.opt.linebreak = true
 
---vim.opt.hlsearch = false
---vim.opt.incsearch = true
+-- Use a swapfile for the buffer
+vim.opt.swapfile = false
 
---vim.opt.termguicolors = true
+-- Make a backup before overwriting a file
+vim.opt.backup = false
 
---vim.opt.scrolloff = 8
---vim.opt.signcolumn = "yes"
---vim.opt.isfname:append("@-@")
+-- When there is a previous search pattern, highlight all its matches
+vim.opt.hlsearch = false
 
---vim.opt.updatetime = 50
+-- While typing a search command, show where the pattern, as it was typed so far, matches
+vim.opt.incsearch = true
 
---vim.opt.colorcolumn = "80"
+-- Enables 24-bit RGB color in the TUI
+vim.opt.termguicolors = true
+
+-- Minimal number of screen lines to keep above and below the cursor while scrolling
+vim.opt.scrolloff = 8
+
+-- Columns that are highlighted
+vim.opt.colorcolumn = "120"
+
+-- Highlight the text line of the cursor
+vim.opt.cursorline = true
