@@ -5,7 +5,7 @@ echo "[dotfiles] Uninstalling dotfiles 🤘🤘🤘"
 if ! brew list --cask ghostty &>/dev/null; then
     echo "[dotfiles] Ghostty is not installed"
 else
-    echo "[dotfiles] Uninstalling Ghostty"
+    echo "[dotfiles] Uninstalling ghostty"
     brew uninstall ghostty
     rm ~/.config/ghostty/config
 fi
@@ -13,21 +13,36 @@ fi
 if ! brew list neovim &>/dev/null; then
     echo "[dotfiles] Neovim is not installed"
 else
-    echo "[dotfiles] Uninstalling Neovim"
+    echo "[dotfiles] Uninstalling neovim"
     brew uninstall neovim
 fi
 
 if ! brew list --cask font-hack-nerd-font &>/dev/null; then
-    echo "[dotfiles] Font hack nerd font is not installed"
+    echo "[dotfiles] Font hack is not installed"
 else
-    echo "[dotfiles] Uninstalling Font hack nerd font"
+    echo "[dotfiles] Uninstalling font hack"
     brew uninstall --cask font-hack-nerd-font
+fi
+
+if ! brew list --cask eurkey &>/dev/null; then
+    echo "[dotfiles] Eurkey is not installed"
+else
+    echo "[dotfiles] Uninstalling eurkey"
+    brew uninstall --cask eurkey
+fi
+
+if ! brew list tmux &>/dev/null; then
+    echo "[dotfiles] Tmux is not installed"
+else
+    echo "[dotfiles] Uninstalling tmux"
+    rm ~/.config/tmux/tmux.conf
+    brew uninstall tmux
 fi
 
 if ! brew list antigen &>/dev/null; then
     echo "[dotfiles] Antigen is not installed"
 else
-    echo "[dotfiles] Uninstalling Antigen"
+    echo "[dotfiles] Uninstalling antigen"
     brew uninstall antigen
 fi
 

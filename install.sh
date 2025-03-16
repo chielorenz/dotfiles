@@ -9,10 +9,10 @@ if [[ $SCRIPT_DIR != "$HOME/.dotfiles" ]]; then
 fi
 
 if [[ $(command -v brew) == "" ]]; then
-	echo "[dotfiles] Installing Homebrew"
+	echo "[dotfiles] Installing homebrew"
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-	echo "\n# Add Homebrew to path" >> ~/.zprofile
+	echo "\n# Add homebrew to path" >> ~/.zprofile
 	echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 else
@@ -20,13 +20,13 @@ else
 fi
 
 if ! brew list --cask ghostty &>/dev/null; then
-	echo "[dotfiles] Installing Ghostty"
+	echo "[dotfiles] Installing ghostty"
 	brew install --cask ghostty
 	if [ -f ~/.config/ghostty/config ]; then
-		echo "[dotfiles] Backup existing Ghostty config file"
+		echo "[dotfiles] Backup existing ghostty config file"
 		mv ~/.config/ghostty/config ~/.config/ghostty/config.bak
 	fi
-	echo "[dotfiles] Symlink Ghostty config file"
+	echo "[dotfiles] Symlink ghostty config file"
   	mkdir -p ~/.config/ghostty/
 	ln -sf ~/.dotfiles/ghostty/config ~/.config/ghostty/config
 else
@@ -34,24 +34,46 @@ else
 fi
 
 if ! brew list --cask font-hack-nerd-font &>/dev/null; then
-	echo "[dotfiles] Installing font hack nerd font"
+	echo "[dotfiles] Installing font hack"
 	brew install --cask font-hack-nerd-font
 else
-	echo "[dotfiles] Font hack nerd font already installed"
+	echo "[dotfiles] Font hack already installed"
 fi
 
-if ! brew list neovimm &>/dev/null; then
-  	echo "[dotfiles] Installing Neovim"
+if ! brew list neovim &>/dev/null; then
+  	echo "[dotfiles] Installing neovim"
 	brew install neovim
   	if [ -f ~/.config/nvim/init.lua ]; then
-	  		echo "[dotfiles] Backup existing Neovim config file"
+	  		echo "[dotfiles] Backup existing neovim config file"
 	  		mv ~/.config/nvim/init.lua ~/.config/nvim/init.lua.bak
   	fi
-  	echo "[dotfiles] Symlink Neovim config file"
+  	echo "[dotfiles] Symlink neovim config file"
   	mkdir -p ~/.config/nvim/
   	ln -sf ~/.dotfiles/nvim/init.lua ~/.config/nvim/init.lua
 else
   	echo "[dotfiles] Neovim already installed"
+fi
+
+if ! brew list --cask eurkey &>/dev/null; then
+	echo "[dotfiles] Installing eurkey"
+	brew install --cask eurkey
+else
+	echo "[dotfiles] Eurkey already installed"
+fi
+
+if ! brew list tmux &>/dev/null; then
+  	echo "[dotfiles] Installing tmux"
+	brew install tmux
+  	if [ -f ~/.config/nvim/init.lua ]; then
+	  		echo "[dotfiles] Backup existing tmux config file"
+	  		mv ~/.config/tmux/tmux.conf ~/.config/tmux/tmux.conf.bak
+  	fi
+  	echo "[dotfiles] Symlink tmux config file"
+  	mkdir -p ~/.config/tmux/
+  	ln -sf ~/.dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
+  	echo "[dotfiles] You should probably disable macos shortcut to change input source, otherwise they will conflict with tmux prefix. Go to Settings ->  Keyboard -> Keyboad Shortcuts -> Input Sources and disable the ^Space shortcut"
+else
+  	echo "[dotfiles] Tmux already installed"
 fi
 
 if ! brew list antigen &>/dev/null; then
