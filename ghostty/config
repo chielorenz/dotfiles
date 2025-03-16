@@ -3,6 +3,7 @@ keybind = cmd+shift+r=reload_config
 
 # Theme
 theme = Oxocarbon
+#theme = GitHub Dark
 
 # Window
 window-padding-x = 8
