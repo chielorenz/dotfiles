@@ -57,6 +57,7 @@ fi
 if ! brew list --cask eurkey &>/dev/null; then
 	echo "[dotfiles] Installing eurkey"
 	brew install --cask eurkey
+	echo "[dotfiles] For the changes to take effect a restart is required"
 else
 	echo "[dotfiles] Eurkey already installed"
 fi
