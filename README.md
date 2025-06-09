@@ -8,7 +8,7 @@ up, so if you want to change the setup you can update this repo and run the scri
 ## Installation
 
 ```bash
-git clone git@github.com:chielorenz/dotfiles-macos.git ~/.dotfiles && sh ~/.dotfiles/install.sh
+git clone https://github.com/chielorenz/dotfiles-macos.git ~/.dotfiles && sh ~/.dotfiles/install.sh
 ```
 
 ## Dependencies
