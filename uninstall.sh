@@ -38,14 +38,6 @@ else
     brew uninstall --cask eurkey
 fi
 
-if ! brew list tmux &>/dev/null; then
-    echo "[dotfiles] Tmux is not installed"
-else
-    echo "[dotfiles] Uninstalling tmux"
-    rm ~/.config/tmux/tmux.conf
-    brew uninstall tmux
-fi
-
 if ! brew list antigen &>/dev/null; then
     echo "[dotfiles] Antigen is not installed"
 else

@@ -75,21 +75,6 @@ else
 	echo "[dotfiles] Eurkey already installed"
 fi
 
-if ! brew list tmux &>/dev/null; then
-  	echo "[dotfiles] Installing tmux"
-	brew install tmux
-  	if [ -f ~/.config/nvim/init.lua ]; then
-	  		echo "[dotfiles] Backup existing tmux config file"
-	  		mv ~/.config/tmux/tmux.conf ~/.config/tmux/tmux.conf.bak
-  	fi
-  	echo "[dotfiles] Symlink tmux config file"
-  	mkdir -p ~/.config/tmux/
-  	ln -sf ~/.dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
-  	echo "[dotfiles] You should probably disable macos shortcut to change input source, otherwise they will conflict with tmux prefix. Go to Settings ->  Keyboard -> Keyboad Shortcuts -> Input Sources and disable the ^Space shortcut"
-else
-  	echo "[dotfiles] Tmux already installed"
-fi
-
 if ! brew list antigen &>/dev/null; then
 	echo "[dotfiles] Installing Antigen"
 	brew install antigen
