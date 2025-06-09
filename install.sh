@@ -94,20 +94,18 @@ else
 fi
 
 casks=(
-	google-chrome
-	visual-studio-code
 	docker
+	visual-studio-code
 	phpstorm
+	google-chrome
 	slack
 )
-echo "[dotfiles] There are some optional packages:"
-printf '[dotfiles] • %s\n' "${casks[@]}"
-read -p "[dotfiles] Do you want to install them [y/n]? " choice
-if [[ $choice =~ ^[Yy]$ ]]; then
-	echo "[dotfiles] Install homebrew optional casks"
-	for c in "${casks[@]}"; do
-		brew list $c &>/dev/null || (echo "[dotfiles] Install $c" && brew install --cask $c)
-	done
-fi
+echo "[dotfiles] There are ${#casks[@]} optional packages:"
+for c in "${casks[@]}"; do
+	read -p "[dotfiles] Do you want to install '$c' [y/n]? " choice
+	if [[ $choice =~ ^[Yy]$ ]]; then
+		brew list $c &>/dev/null || (echo "[dotfiles] Installing $c" && brew install --cask $c)
+	fi
+done
 
 echo "[dotfiles] All done 🎉"
