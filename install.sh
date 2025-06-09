@@ -9,7 +9,6 @@ if [[ $SCRIPT_DIR != "$HOME/.dotfiles" ]]; then
 fi
 
 echo "[dotfiles] Enabling custom git config"
-brew install git
 if [ -f ~/.gitconfig ]; then
 	echo "[dotfiles] Backup existing git config file"
 	mv ~/.gitconfig ~/.gitconfig.bak
