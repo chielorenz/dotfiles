@@ -13,7 +13,6 @@ if [[ $(command -v brew) == "" ]]; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 	echo "\n# Add homebrew to path" >> ~/.zprofile
-	echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 else
 	echo "[dotfiles] Homebrew already installed"
