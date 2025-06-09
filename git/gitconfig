@@ -1,0 +1,17 @@
+[user]
+	name = Luca Lorenzini
+	email = llorenzini@wethod.com
+[init]
+	defaultBranch = main
+[core]
+	autocrlf = input
+[core]
+	sshCommand = ssh -i ~/.ssh/id_rsa_wethod
+
+# Load different config for chielorenz folder
+[includeIf "gitdir:~/dev/chielorenz/"]
+    path = ~/.dotfiles/git/gitconfig-chielorenz
+
+# Load different config for dotfiles
+[includeIf "gitdir:~/.dotfiles/"]
+	path = ~/.dotfiles/git/gitconfig-chielorenz

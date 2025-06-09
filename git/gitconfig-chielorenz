@@ -1,0 +1,6 @@
+[user]
+	name = Luca Lorenzini
+	email = chielorenz@gmail.com
+[core]
+	# Use dedicate ssh key
+	sshCommand = ssh -i ~/.ssh/id_rsa_chielorenz

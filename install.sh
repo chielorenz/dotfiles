@@ -19,6 +19,19 @@ else
 	echo "[dotfiles] Homebrew already installed"
 fi
 
+if ! brew list git &>/dev/null; then
+	echo "[dotfiles] Installing git"
+	brew install git
+	if [ -f ~/.gitconfig ]; then
+		echo "[dotfiles] Backup existing git config file"
+		mv ~/.gitconfig ~/.gitconfig.bak
+	fi
+	echo "[dotfiles] Symlink git config file"
+	ln -sf ~/.dotfiles/git/gitconfig ~/.gitconfig
+else
+	echo "[dotfiles] Git already installed"
+fi
+
 if ! brew list --cask ghostty &>/dev/null; then
 	echo "[dotfiles] Installing ghostty"
 	brew install --cask ghostty

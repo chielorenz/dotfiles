@@ -2,6 +2,13 @@
 
 echo "[dotfiles] Uninstalling dotfiles 🤘🤘🤘"
 
+if ! brew list git &>/dev/null; then
+    echo "[dotfiles] Git is not installed"
+else
+    echo "[dotfiles] Uninstalling git"
+    brew uninstall git
+fi
+
 if ! brew list --cask ghostty &>/dev/null; then
     echo "[dotfiles] Ghostty is not installed"
 else
