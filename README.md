@@ -9,6 +9,9 @@ up, so if you want to change the setup you can update this repo and run the scri
 
 ```bash
 git clone git@github.com:chielorenz/dotfiles-macos.git ~/.dotfiles && sh ~/.dotfiles/install.sh
+
+# Or without git
+mkdir ~/.dotfiles && curl -L https://github.com/chielorenz/dotfiles-macos/archive/main.tar.gz | tar -xz -C ~/.dotfiles --strip-components=1 && sh ~/.dotfiles/install.sh
 ```
 
 ## Dependencies
