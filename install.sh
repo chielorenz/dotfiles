@@ -97,9 +97,13 @@ casks=(
 )
 echo "[dotfiles] There are ${#casks[@]} optional packages:"
 for c in "${casks[@]}"; do
-	read -p "[dotfiles] Do you want to install '$c' [y/n]? " choice
-	if [[ $choice =~ ^[Yy]$ ]]; then
-		brew list $c &>/dev/null || (echo "[dotfiles] Installing $c" && brew install --cask $c)
+	if ! brew list --cask $c &>/dev/null; then
+		read -p "[dotfiles] Do you want to install '$c' [y/n]? " choice
+		if [[ $choice =~ ^[Yy]$ ]]; then
+			brew list $c &>/dev/null || (echo "[dotfiles] Installing $c" && brew install --cask $c)
+		fi
+	else
+		echo "[dotfiles] $c already installed"
 	fi
 done
 
