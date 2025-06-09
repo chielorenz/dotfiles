@@ -2,11 +2,9 @@
 
 echo "[dotfiles] Uninstalling dotfiles 🤘🤘🤘"
 
-if ! brew list git &>/dev/null; then
-    echo "[dotfiles] Git is not installed"
-else
-    echo "[dotfiles] Uninstalling git"
-    brew uninstall git
+if [ -f ~/.gitconfig ]; then
+	echo "[dotfiles] Removing custom git config file"
+    rm ~/.gitconfig
 fi
 
 if ! brew list --cask ghostty &>/dev/null; then
