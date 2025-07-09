@@ -6,7 +6,7 @@
 [core]
 	autocrlf = input
 [core]
-	sshCommand = ssh -i ~/.ssh/id_rsa_wethod
+	sshCommand = ssh -i ~/.ssh/id_ed25519_wethod
 
 # Load different config for chielorenz folder
 [includeIf "gitdir:~/dev/chielorenz/"]
